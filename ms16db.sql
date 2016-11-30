@@ -45,12 +45,12 @@ CREATE TABLE PASSAGE (
 	Direction INTEGER
 );
 
-INSERT INTO PLAYER VALUES (1, 0, 0);
+INSERT INTO PLAYER VALUES (1, 0, 7.00);
 
-INSERT INTO LOCATION VALUES (1, 1, "You are now home, there is a door in the corner, and bed in the opposite corner.", 0);
+INSERT INTO LOCATION VALUES (1, 1, "You are now home, there is a door in the corner, and bed in the opposite corner.", 0.15);
 INSERT INTO PASSAGE VALUES (1, 1, "Door", 2);
 INSERT INTO PASSAGE VALUES (2, 1, "Bed", 3);
 
-INSERT INTO LOCATION VALUES (2, 0, "You are now outside.", 0);
+INSERT INTO LOCATION VALUES (2, 0, "You are now outside.", 0.10);
 INSERT INTO PASSAGE VALUES (3, 2, "Station", 4);
-INSERT INTO LOCATION VALUES (3, 0, "Voitit pelin.", 0);
+INSERT INTO LOCATION VALUES (3, 0, "Voitit pelin.", 2.00);

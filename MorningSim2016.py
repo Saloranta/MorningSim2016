@@ -58,7 +58,6 @@ def inventory():
 
 def look_around(loc):
     print("-"*80)
-    show_location(loc)
     if (loc!="EXIT"):
         show_items(loc)
         show_passages(loc)
@@ -66,15 +65,54 @@ def look_around(loc):
 
 def move(loc, description):
     destination = loc
-    cur = db.cursor()
-    sql = "SELECT Direction FROM PASSAGE WHERE LocationID='" + str(loc) + "' AND Description='" + description + "'"
-    cur.execute(sql)
-    if cur.rowcount >= 1:
-        for row in cur.fetchall():
-            destination = row[0]
+    if description == "back":
+        destination = prevloc
+        cur2 = db.cursor()
+        sql2 = "SELECT TAffect FROM LOCATION WHERE ID='" + str(loc) + "'"
+        cur2.execute(sql2)
+        for row2 in cur2.fetchall():
+            add_time(row2[0])
     else:
-        destination = loc
+        cur = db.cursor()
+        sql = "SELECT Direction FROM PASSAGE WHERE LocationID='" + str(loc) + "' AND Description='" + description + "'"
+        cur.execute(sql)
+        if cur.rowcount >= 1:
+            for row in cur.fetchall():
+                destination = row[0]
+                cur2 = db.cursor()
+                sql2 = "SELECT TAffect FROM LOCATION WHERE ID='" + str(row[0]) + "'"
+                cur2.execute(sql2)
+                for row2 in cur2.fetchall():
+                    add_time(row2[0])
+        else:
+            destination = loc
     return destination
+
+def add_time(addition):
+    cur = db.cursor()
+    sql = "SELECT T FROM PLAYER WHERE ID='1'"
+    cur.execute(sql)
+    for row in cur.fetchall():
+        newtime = row[0] + addition
+        cur2 = db.cursor()
+        sql2 = "UPDATE PLAYER SET T='" + str(newtime) + "' WHERE ID='1'"
+        cur2.execute(sql2)
+    return
+
+def show_time():
+    cur = db.cursor()
+    sql = "SELECT T FROM PLAYER WHERE ID='1'"
+    cur.execute(sql)
+    for row in cur.fetchall():
+        i, d = divmod(row[0], 1)
+        min = d*60
+        imin, dmin = divmod(min, 1)
+        if imin < 10:
+            print("The time is " + str(i) + ":0" + str(imin))
+        else:
+            print("The time is " + str(i) + ":" + str(imin))
+    return
+
 
 # Avataan yhteys tietokantaan
 db = mysql.connector.connect(
@@ -86,12 +124,13 @@ db = mysql.connector.connect(
 
 # Init player loc
 loc = 1
+prevloc = 1
 action = ""
 
 # Clear console
 print("\n"*1000)
 
-look_around(loc)
+show_location(loc)
 
 #Main loop
 while action != "quit" and loc != "EXIT":
@@ -105,7 +144,7 @@ while action != "quit" and loc != "EXIT":
     if len(input_s) >= 2:
         target = input_s[len(input_s)-1].lower()
     else:
-        target("")
+        target = ""
 
     print("")
 
@@ -113,10 +152,17 @@ while action != "quit" and loc != "EXIT":
     if action=="go" or action=="walk" or action=="move":
         newloc = move(loc, target)
         if loc == newloc:
-            print("You can't " + action + "there.");
+            print("You can't " + action + " there.");
         else:
+            prevloc = loc
             loc = newloc
+            show_location(loc)
+
+    elif action=="look" or action=="examine" or action=="view" or action=="watch" or action=="show":
+        if target=="" or target=="around":
             look_around(loc)
+        elif target=="clock" or target=="watch" or target=="time":
+            show_time()
 
     elif action != "quit" and action != "":
         print("I don't know how to " + action)
