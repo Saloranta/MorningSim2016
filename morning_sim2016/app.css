@@ -1,0 +1,59 @@
+@font-face { font-family: sim; src: url('Helvetica-UltraCompressed.otf'); }
+
+html {
+    background-color: #c9e6ff;
+    font-family: arial, sans-serif;
+}
+
+body {
+    margin: 0;
+}
+
+.page {
+    width: 728px;
+    margin: 0 auto;
+    z-index: 0;
+}
+
+header {
+    margin-bottom: 45px;
+}
+
+.logo {
+    font-family: sim;
+    text-decoration: none;
+    color: #f4f4f4;
+    font-size: 58px;
+    font-style: italic;
+}
+
+.nav_a {
+    font-family: sim;
+    text-decoration: none;
+    color: #f4f4f4;
+    font-size: 30px;
+    margin-right: 13px;
+}
+
+.nav_a:hover, .loc {
+    color: #e4e4e4;
+}
+
+.game_desc_div, .about_us_div, .gdd_div {
+    background-color: #f4f4f4;
+    border: 1px solid black;
+    padding: 13px;
+    width: 580px;
+}
+
+.top, .bottom {
+    background-color: black;
+    height: 55%;
+    width: 100%;
+    z-index: 100;
+    position: fixed;
+}
+
+.bottom {
+    bottom: 0;
+}
