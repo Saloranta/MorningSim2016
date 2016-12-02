@@ -98,7 +98,7 @@ insert into itemtype values (2, "Bottle", "You recognize the brand of the unopen
 insert into item values (2, 2, 8);
 
 insert into location values (9, 0, "Train station. Full of commuters. You wonder if trustworthy VR will be on time today. You see
-			      an escalator descending to the train stop in front of you. The train is already there!");
+			      an escalator descending to the train stop in front of you. The train is already there!", 0.07);
 insert into passage values (14, 9, "Escalator to train", 12);
 
 INSERT INTO LOCATION VALUES (10, 0, "Bus arrives to your stop. You see the driver and the ticket selling machine. 
@@ -115,12 +115,12 @@ insert into passage values (17, 11, "Ticket machine", 13);
 insert into passage values (18, 11, "Driver", 13);
 
 insert into location values (12, 0, "Train full of people. You're on the edge because of your prejudice againt denizens
-			     of Vantaa. You try to be as unnoticable as you can. You stand near the ticket machine.", 0.15);
+			     of Vantaa. You try to be as unnoticable as you can. You stand near the ticket machine.", 0.13);
 insert into passage values (19, 12, "Ticket machine", 13);
 	
 insert into location values (13, 0, "Railway station. You're in a crowded hall. Wondering whether you 
 			     should take the tram or perhaps walk to school. The door to your right takes you to the tram stop and
-			     the door in front of you takes you to the streets of Helsinki.");
+			     the door in front of you takes you to the streets of Helsinki.", 0.1);
 insert into passage values (20, 13, "Door to tram stop", 16);
 insert into passage values (21, 13, "Door to the streets of Helsinki", 14);
 
@@ -136,11 +136,11 @@ insert into location values (15, 0, "You spend the most awkward 10 minutes of yo
 insert into passage values (23, 15, "Mall", 20);
 
 insert into location values (16, 0, "Tram stop. An elderly couple is also waiting for the tram #6. You're positioned perfectly
-			      so the tram door is right in front of you when it arrives.");
+			      so the tram door is right in front of you when it arrives.", 0.05);
 insert into passage values (24, 16, "Tram door", 17);
 
 insert into location values (17, 0, "Tram. It is fairly empty. You sit down but see the elderly couple taking a seat in front of you.
-			    The tram door is almost behind you.");
+			    The tram door is almost behind you.", 0.05);
 insert into passage values (25, 17, "Elderly couple", 18);
 insert into passage values (26, 17, "Tram door", 20);
 
@@ -151,7 +151,7 @@ insert into location values (18, 0, "You had an enjoyable chat with the pensione
 insert into passage values (27, 18, "School", 19);
 
 insert into location values (19, 0, "School yard. You see a couple of familiar faces at the bad kids' corner. You also notice
-			    something weird on the ground as you walk towards the entrance to school.");
+			    something weird on the ground as you walk towards the entrance to school.", 0.05);
 insert into passage values (28, 19, "School door", 22);
 insert into passage values (29, 19, "Acquaintances", 21);
 insert into passage values (30, 19, "Weird object", 20);
@@ -167,11 +167,11 @@ insert into item values (3, 3, 20);
 			     
 
 insert into location values (21, 0, "Unnamed bar. You've failed... You didn't make it to school in time.
-			    Oh well, luckily you can make new friends as you talk and sip your beverage(s).");
+			    Oh well, luckily you can make new friends as you talk and sip your beverage(s).", 4.0);
 
 insert into location values (22, 0, "School building. These old corridors have served many generations of students before
 			    you. You walk towards your home class. You collide accidentally with a pretty girl near the door
-			    to your home class.");
+			    to your home class.", 0.05);
 insert into passage values (32, 22, "Class door", 23);
 insert into passage values (33, 22, "Girl", 21);
 
